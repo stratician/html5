@@ -1,0 +1,200 @@
+<html>
+
+<head>
+
+	<style>
+		canvas {
+			border:#000000 1px solid;
+		}
+	
+	</style>
+
+	<script>
+		
+
+		class CMario {
+		
+			
+			constructor(xpos, ypos, vx, vy) {
+				this.x = xpos;
+				this.y = ypos;
+				this.vx = vx;
+				this.vy = vy;
+				this.alpha = 0.2 + Math.random() * 0.8;
+			}
+
+		}
+
+
+		var c;
+		var ctx;
+		var x;
+		var y;
+		var img;
+		var ticker = 0.0;
+		var marios;
+		var GRAVITY = 0.5;
+		var audio;
+
+		function init() { 
+			c = document.getElementById('myCanvas');
+			ctx = c.getContext('2d');
+
+			img = document.getElementById("mario_png");
+
+
+			x = 20;
+			y = 20;
+			document.addEventListener("keydown", direction);
+				
+			// Init Marios
+			marios = new Array();
+			audio = new Array();
+			
+			audio[0] = new Audio('./its-me-mario.ogg');
+			audio[1] = new Audio('./mario-woohoo.wav');
+			audio[2] = new Audio('./mario-ya.wav');
+			audio[3] = new Audio('./mario-yah.wav');
+			audio[4] = new Audio('./mario-yippee.wav');
+			var playPromise = audio[0].play();
+			//myAudio.pause();
+
+			
+			// Main Game loop
+			window.requestAnimationFrame(gameLoop);
+
+
+		}
+
+		
+		var bCreateFirst = true;
+		function CreateMarios()
+		{
+			if(bCreateFirst || Math.random() < 0.1)
+			{
+				var i = marios.push(new CMario(Math.random() * 400 + 400, 800, Math.random()*10.0 - 5.0, -Math.random()*30));
+				MarioJumpSFX(i);
+				bCreateFirst = false;
+			}
+		}
+
+		function DrawMarios()
+		{
+			for(i=0;i<marios.length;i++)
+			{
+				ctx.globalAlpha = marios[i].alpha;
+				ctx.drawImage(img, marios[i].x, marios[i].y, 128,145);
+			}
+			ctx.globalAlpha = 1.0;
+
+		}
+		
+		function MarioJumpSFX(i)
+		{
+			if(Math.random() < 0.3) audio[(i%5)].play();
+		}
+
+		function ProcessMarios()
+		{
+			for(i=0;i<marios.length;i++)
+			{
+				marios[i].x += marios[i].vx;
+				marios[i].y += marios[i].vy;
+				
+				marios[i].vy += GRAVITY;
+
+				if(marios[i].y > 850) 
+				{
+					marios[i].y = 850;
+					marios[i].vy *= 0.8;
+
+					if(Math.abs(marios[i].vy) < 10) 
+					{
+						marios[i].vy = -Math.random()*35;
+					}
+						else marios[i].vy = -marios[i].vy;
+
+				}	
+
+				if(marios[i].x < 0 || marios[i].x > 1200) marios[i].vx = -marios[i].vx;
+
+
+
+
+
+
+			}
+		}
+
+
+		function gameLoop() {
+			ticker++;
+			
+			if(ticker > 60*4)
+			{
+				CreateMarios();
+			}
+
+			draw();
+			ProcessMarios();
+			DrawMarios();
+			window.requestAnimationFrame(gameLoop);
+		}
+
+		function draw() {
+			ctx.fillStyle = "#ffffff";
+			ctx.fillRect(0, 0, 1600, 1000);
+			ctx.fillStyle = "#0088AA";
+			ctx.fillRect(x, y, 10, 10);
+			ctx.drawImage(img, 800 + Math.sin(ticker * 0.1) * 128, 130, 128,145);
+		}
+
+
+		function direction(event) {
+			if(event.keyCode == 37)
+			{
+				// alert("Left");
+				x--;
+				draw();
+			}
+
+			else if(event.keyCode == 39)
+			{
+				// alert("Right");
+				x++;
+				draw();
+			}
+
+	
+		}	
+
+
+		
+
+	</script>
+
+
+</head>
+
+
+<body>
+	<div style="position:absolute; left: 800px; top: 400px;"><img src="mario.png" onclick="init()"></img></div>
+	<audio id="mario">
+	  <source src="its-me-mario.ogg" type="audio/ogg">
+	  <source src="its-me-mario.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+	
+	<audio id="mario_woohoo">
+	  <source src="mario-woohoo.wav" type="audio/wav">
+	  
+	 
+	</audio>
+
+
+
+	<canvas id="myCanvas" width="1600" height="1000">
+	<img id="mario_png" src="mario.png" />
+</body>
+
+</html>

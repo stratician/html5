@@ -1,0 +1,340 @@
+<html>
+
+<head>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+	<style>
+	
+		canvas {
+			border:#000000 1px solid;
+		}
+		
+		.pos {
+			position:absolute;
+			left: 50px;
+			width: 695px;
+			overflow:hidden;
+			z-index: 1;
+		}
+	
+	</style>
+
+	<script>
+		
+		class CPoster {
+			
+			constructor (sx, sy, dx, dy) {
+				this.x = sx;
+				this.y = sy;
+				this.dx = dx;
+				this.dy = dy;
+				
+				this.vx = 0;
+				this.vy = 0;
+				
+				this.bAtDest = false;
+			}
+		}
+		
+		function init() { 
+			
+			let imgWidth = $('#myobj #mario_png').width();
+			poster = new CPoster(-imgWidth - 10, 100, 200, 100);
+			
+			
+			console.log("init");
+			$('#myobj').css('left', poster.x);
+			$('#myobj').css('top', poster.y);
+			
+			// Main Game loop
+			window.requestAnimationFrame(gameLoop);
+			
+			
+			
+
+		}
+
+		var ticker = 0;
+	
+		function Process()
+		{
+			
+			if(!poster.bAtDest) {
+				if(poster.x < poster.dx) {
+					poster.x += poster.vx;
+					poster.vx += Math.sqrt((poster.dx - poster.x) * (poster.dx - poster.x)) * 0.005;
+					poster.vx *= 0.90;
+				}
+				else {
+					poster.x = poster.dx;
+					poster.bAtDest = true;
+				}
+			}
+			else {
+				poster.x = poster.dx + - 100 + Math.cos(ticker) * 100;
+				poster.y = poster.dy + Math.sin(ticker*0.99) * 100;
+				ticker += 0.1;
+			}
+			$('#myobj').css('left', poster.x);
+			$('#myobj').css('top', poster.y);
+		}
+
+
+		function gameLoop() {
+			
+			
+			
+			Process();
+			
+			window.requestAnimationFrame(gameLoop);
+		}
+
+		$(document).ready(function(){
+			init();
+			
+		});
+		
+
+	</script>
+
+
+</head>
+
+
+<body>
+
+	<div>
+		<div class='pos' id='myobj'> <img id="mario_png" src="pvp.png" /> </div>
+	</div>
+
+
+   </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f13326111%2felement-outside-container-without-creating-scrollbars" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+
+    </li>
+</ol>
+    </div>
+</header>
+    <div id="js-gdpr-consent-banner" class="p8 ff-sans ps-fixed b0 l0 r0 z-banner" role="banner" aria-hidden="false" style="background-color: #3b4045; color: white;"> 
+        <div class="wmx8 mx-auto grid grid__center" role="alertdialog" aria-describedby="notice-message">
+            <div class="grid--cell mr12" aria-label="notice-message">
+                <p class="mb0 lh-lg">
+                    By using our site, you acknowledge that you have read and understand our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/cookie-policy">Cookie Policy</a>, <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/privacy-policy">Privacy Policy</a>, and our <a class="s-link s-link__inherit td-underline fc-white" target="_blank" href="https://stackoverflow.com/legal/terms-of-service/public">Terms of Service</a>.
+                </p>
+            </div>
+            <div class="grid--cell">
+                <a class="s-btn s-btn__muted s-btn__icon js-notice-close" aria-label="notice-dismiss">
+                    <svg aria-hidden="true" class="svg-icon iconClear" width="18" height="18" viewBox="0 0 18 18"><path d="M15 4.41L13.59 3 9 7.59 4.41 3 3 4.41 7.59 9 3 13.59 4.41 15 9 10.41 13.59 15 15 13.59 10.41 9 15 4.41z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+StackExchange.scrollPadding.setPaddingTop(50, 10);    </script>
+
+
+
+
+
+    <div class="container">
+            
+
+
+<div id="left-sidebar" data-is-here-when="md lg" class="left-sidebar js-pinned-left-sidebar ps-relative">
+    <div class="left-sidebar--sticky-container js-sticky-leftnav">
+        <nav role="navigation">
+            <ol class="nav-links">
+        <li class="">
+            <a
+                href="/"
+                class="pl8 js-gps-track nav-links--link"
+                
+                data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+                    <div class="grid ai-center">
+                        <div class="grid--cell truncate">
+                            Home
+                        </div>
+                    </div>
+            </a>
+        </li>
+                <li>
+                    <ol class="nav-links">
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+                        
+                                <li class=" youarehere">
+            <a id="nav-questions"
+                href="/questions"
+                class="pl8 js-gps-track nav-links--link -link__with-icon"
+                
+                data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">
+<svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 100 16A8 8 0 009 1zM8 15.32a6.4 6.4 0 01-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 012.32 10.24v.01z"/></svg>                    <span class="-link--channel-name">Stack Overflow</span>
+            </a>
+        </li>
+
+                        
+        <li class="">
+            <a id="nav-tags"
+                href="/tags"
+                class=" js-gps-track nav-links--link"
+                
+                data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">
+                    <div class="grid ai-center">
+                        <div class="grid--cell truncate">
+                            Tags
+                        </div>
+                    </div>
+            </a>
+        </li>
+        <li class="">
+            <a id="nav-users"
+                href="/users"
+                class=" js-gps-track nav-links--link"
+                
+                data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">
+                    <div class="grid ai-center">
+                        <div class="grid--cell truncate">
+                            Users
+                        </div>
+                    </div>
+            </a>
+        </li>
+                            <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Find a Job</li>
+        <li class="">
+            <a id="nav-jobs"
+                href="/jobs?so_medium=StackOverflow&amp;so_source=SiteNav"
+                class=" js-gps-track nav-links--link"
+                
+                data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">
+                    <div class="grid ai-center">
+                        <div class="grid--cell truncate">
+                            Jobs
+                        </div>
+                    </div>
+            </a>
+        </li>
+        <li class="">
+            <a id="nav-companies"
+                href="/jobs/companies?so_medium=StackOverflow&amp;so_source=SiteNav"
+                class=" js-gps-track nav-links--link"
+                
+                data-gps-track="top_nav.click({is_current:false, location:2, destination:12})">
+                    <div class="grid ai-center">
+                        <div class="grid--cell truncate">
+                            Companies
+                        </div>
+                    </div>
+            </a>
+        </li>
+                    </ol>
+                </li>
+                    <li>
+                        <ol class="nav-links">
+                                <li class="grid ai-center jc-space-between ml8 mt24 mb4">
+                                    <div class="grid--cell tt-uppercase fs-fine fc-light">Teams</div>
+                                    <div class="grid--cell fs-fine fc-light mr4">
+                                        <a href="javascript:void(0)" class="s-link s-link__inherit js-gps-track"
+                                            role="button"
+                                            aria-controls="popover-teams-create-cta"
+                                            data-controller="s-popover"
+                                            data-action="s-popover#toggle"
+                                            data-s-popover-placement="bottom-start"
+                                            data-s-popover-toggle-class="is-selected"
+                                            data-gps-track="teams.create.left-sidenav.click({ Action: ShowInfo })"
+                                            data-ga="[&quot;teams left navigation - anonymous&quot;,&quot;left nav show teams info&quot;,null,null,null]">
+                                            What&#x2019;s this?
+                                        </a>
+
+                                    </div>
+                                </li>
+                                <li class="ps-relative">
+                                    <a href="https://stackoverflow.com/teams"
+                                        class="pl8 js-gps-track nav-links--link"
+                                        title="Stack Overflow for Teams is a private, secure spot for your organization's questions and answers."
+                                        data-gps-track="teams.create.left-sidenav.click({ Action: TeamsClick })"
+                                        data-ga="[&quot;teams left navigation - anonymous&quot;,&quot;left nav team click&quot;,&quot;stackoverflow.com/teams&quot;,null,null]">
+                                        <div class="grid ai-center">
+                                            <div class="grid--cell s-avatar va-middle bg-orange-400">
+                                                <div class="s-avatar--letter mtn1">
+                                                    <svg aria-hidden="true" class="svg-icon iconBriefcaseSm" width="14" height="14" viewBox="0 0 14 14"><path d="M4 3a1 1 0 011-1h4a1 1 0 011 1v1h.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-7A1.5 1.5 0 012 10.5v-5C2 4.67 2.67 4 3.5 4H4V3zm5 1V3H5v1h4z"/></svg>
+                                                </div>
+                                                <svg aria-hidden="true" class="native s-avatar--badge svg-icon iconShieldXSm" width="9" height="10" viewBox="0 0 9 10"><path d="M0 1.84L4.5 0 9 1.84v3.17C9 7.53 6.3 10 4.5 10 2.7 10 0 7.53 0 5.01V1.84z" fill="var(--white)"/><path d="M1 2.5L4.5 1 8 2.5v2.51C8 7.34 5.34 9 4.5 9 3.65 9 1 7.34 1 5.01V2.5zm2.98 3.02L3.2 7h2.6l-.78-1.48a.4.4 0 01.15-.38c.34-.24.73-.7.73-1.14 0-.71-.5-1.23-1.41-1.23-.92 0-1.39.52-1.39 1.23 0 .44.4.9.73 1.14.12.08.18.23.15.38z" fill="var(--black-500)"/></svg>
+                                            </div>
+                                            <div class="grid--cell pl6">
+Free 30 Day Trial                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                        </ol>
+                    </li>
+            </ol>
+        </nav>
+    </div>
+
+
+        <div class="s-popover w-auto p16"
+             id="popover-teams-create-cta"
+             role="menu"
+             aria-hidden="true">
+            <div class="s-popover--arrow"></div>
+
+            <div class="ps-relative overflow-hidden">
+                <p class="mb2"><strong>Teams</strong></p>
+                <p class="mb16 fs-caption fc-medium">Q&amp;A for Work</p>
+                <p class="mb8 fs-caption fc-medium">
+
+                            Stack Overflow for Teams is a private, secure spot for you and
+                            your coworkers to find and share information.
+                                        </p>
+                <a href="https://stackoverflow.com/teams"
+                   class="js-gps-track ws-nowrap d-block"
+                   data-gps-track="teams.create.left-sidenav.click({ Action: CtaClick })"
+                   data-ga="[&quot;teams left navigation - anonymous&quot;,&quot;left nav cta&quot;,&quot;stackoverflow.com/teams&quot;,null,null]">
+Learn more                </a>
+            </div>
+
+            <div class="ps-absolute t8 r8">
+                <svg width="53" height="49" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M49 11l.2 31H18.9L9 49v-7H4V8h31" fill="#CCEAFF" /><path d="M44.5 19v-.3l-.2-.1-18-13-.1-.1H.5v33h4V46l.8-.6 9.9-6.9h29.3V19z" stroke="#1060E1" stroke-miterlimit="10" /><path d="M31 2l6-1.5 7 2V38H14.9L5 45v-7H1V6h25l5-4z" fill="#fff" /><path d="M7 16.5h13m-13 6h14m-14 6h18" stroke="#1060E1" stroke-miterlimit="10" /><path d="M39 30a14 14 0 1 0 0-28 14 14 0 0 0 0 28z" fill="#FFB935" /><path d="M50.5 14a13.5 13.5 0 1 1-27 0 13.5 13.5 0 0 1 27 0z" stroke="#F48024" stroke-miterlimit="10" /><path d="M32.5 21.5v-8h9v8h-9zm2-9.5V9.3A2.5 2.5 0 0 1 37 6.8a2.5 2.5 0 0 1 2.5 2.5V12h-5zm2 3v2m1-2v2" stroke="#fff" stroke-miterlimit="10" /></svg>
+            </div>
+        </div>
+
+</div>
+
+
+
+        <div id="content" class="snippet-hidden">
+
+            
+<div itemprop="mainEntity" itemscope itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a">
+
+    <div class="inner-content clearfix">
+
+        
+
+            <div id="question-header" class="grid sm:fd-column">
+                        <h1 itemprop="name" class="fs-headline1 ow-break-word mb8 grid--cell fl1"><a href="/questions/13326111/element-outside-container-without-creating-scrollbars" class="question-hyperlink">Element outside container without creating scrollbars</a></h1>
+                <div class="ml12 aside-cta grid--cell print:d-none sm:ml0 sm:mb12 sm:order-first sm:as-end">
+                        <a href="/questions/ask" class="ws-nowrap s-btn s-btn__primary">
+        Ask Question
+    </a>
+
+</body>
+
+</html>
